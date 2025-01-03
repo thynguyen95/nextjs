@@ -86,6 +86,15 @@ const Home = async () => {
     // const data = await getAllProduct();
     const data = await getAllProductAction();
     console.log("data: ", data);
+    const placeholderImage = "https://i.pravatar.cc?u=0";
+
+    // Function to check if URL is valid (starts with https and ends with .png or .jpg)
+    const isValidImageUrl = (url) => {
+        return (
+            url.startsWith("https://") &&
+            (url.endsWith(".png") || url.endsWith(".jpg"))
+        );
+    };
 
     return (
         <div>
@@ -93,14 +102,27 @@ const Home = async () => {
 
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {data.map((item) => {
+                    console.log("item: ", item.image);
+                    // Handling the image URL
+                    const imageUrl = item.image.trimEnd(); // Remove trailing whitespace
+
+                    // Check if the image URL is absolute or relative
+
+                    const isValidUrl = isValidImageUrl(imageUrl);
+
                     return (
-                        <Link href={`/detail/${item.id}`} className="group">
+                        <Link
+                            key={item.id}
+                            href={`/detail/${item.id}`}
+                            className="group"
+                        >
                             <Image
+                                // src={item.image.trimEnd()} // Kiểm tra và loại bỏ khoảng trắng ở cuối URL
+                                src={isValidUrl ? imageUrl : placeholderImage}
+                                alt={item.name}
                                 width={300}
                                 height={300}
                                 crossOrigin="anonymous"
-                                src={encodeURIComponent(item.image.trimEnd())}
-                                alt=""
                             />
                             <h3 className="mt-4 text-sm text-gray-700">
                                 {item.name}
