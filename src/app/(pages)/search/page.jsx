@@ -25,6 +25,7 @@ const Search = async ({ searchParams }) => {
                                     height={300}
                                     crossOrigin="anonymous"
                                     src={item.image}
+                                    alt=""
                                 />
                                 <h3 className="mt-4 text-sm text-gray-700">
                                     {item.name}
