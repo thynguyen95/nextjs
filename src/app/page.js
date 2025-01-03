@@ -70,7 +70,6 @@ export const metadata = {
             },
         ],
     },
-    canonical: "https://nextjs-nine-khaki-61.vercel.app/",
 };
 
 const getAllProduct = async () => {

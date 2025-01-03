@@ -34,6 +34,10 @@ export default function RootLayout({ children }) {
                     crossOrigin="anonymous"
                     referrerPolicy="no-referrer"
                 />
+                <link
+                    rel="canonical"
+                    href="https://nextjs-nine-khaki-61.vercel.app/"
+                />
             </head>
             <body className={`${roboto.variable} antialiased`}>
                 <HearderHome />
