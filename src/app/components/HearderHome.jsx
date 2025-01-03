@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
     Navbar,
@@ -7,20 +8,21 @@ import {
     NavbarLink,
     NavbarToggle,
 } from "flowbite-react";
+import { useRouter } from "next/navigation";
 
 const HearderHome = () => {
+    const [keyword, setKeyword] = useState("");
+    const router = useRouter();
+
     return (
         <>
             <Navbar fluid rounded>
                 <NavbarBrand as={Link} href="https://flowbite-react.com">
                     <img
-                        src="/favicon.svg"
+                        src="./next.svg"
                         className="mr-3 h-6 sm:h-9"
                         alt="Flowbite React Logo"
                     />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite React
-                    </span>
                 </NavbarBrand>
                 <NavbarToggle />
                 <NavbarCollapse>
@@ -35,6 +37,24 @@ const HearderHome = () => {
                     <NavbarLink href="#">Contact</NavbarLink>
                 </NavbarCollapse>
             </Navbar>
+
+            <form
+                className="w-full"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    router.push(`/search?keyword=${keyword}`);
+                }}
+            >
+                <input
+                    onChange={(e) => {
+                        setKeyword(e.target.value);
+                    }}
+                    type="text"
+                    placeholder="Search..."
+                    className="w-full outline-none bg-transparent text-gray-600 font-semibold text-[15px]"
+                />
+                <Link href={`/search?keyword=${keyword}`}>Search</Link>
+            </form>
         </>
     );
 };
