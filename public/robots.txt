@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# Host
+Host: https://nextjs-nine-khaki-61.vercel.app
+
+# Sitemaps
+Sitemap: https://nextjs-nine-khaki-61.vercel.app/sitemap.xml
+Sitemap: https://your-site.com/sitemap-pages-1.xml
+Sitemap: https://your-site.com/sitemap-pages-2.xml
