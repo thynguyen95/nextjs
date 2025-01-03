@@ -2,7 +2,8 @@ import { getProductByIdAction } from "@/app/actions/services/productAPI";
 import Image from "next/image";
 import React from "react";
 
-export const metadata = async ({ params }) => {
+export const generateMetadata = async ({ params }) => {
+    console.log("params: ", params.id);
     const product = await getProductByIdAction(params.id);
 
     return {
